@@ -1,11 +1,14 @@
-console.log('Starting app!')
+const http = require('http');
 
-setTimeout(() => {
-    console.log('Inside a callback')
-}, 2000)
+const hostname = '127.0.0.1';
+const port = 3000;
 
-setTimeout(() => {
-    console.log('Second timeout')
-}, 0)
+const server = http.createServer((req, res) => {
+  res.statusCode = 200;
+  res.setHeader('Content-Type', 'text/plain');
+  res.end('Hello World\n');
+});
 
-console.log('Closing app!')
+server.listen(port, hostname, () => {
+  console.log(`Server running at http://${hostname}:${port}/`);
+});
